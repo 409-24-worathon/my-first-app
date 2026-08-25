@@ -74,10 +74,12 @@ def show_result_dialog(ans1, ans2, ans3, ans4):
         st.error("💀 You lose!")
 
 
-
+# ----------------------------------------------------
+# 1. ปุ่มเริ่มเล่นเกม
+# ----------------------------------------------------
 st.button("🎮 เริ่มเล่นเกม", on_click=reset_game)
 
-
+# 2. แถบแสดงเวลานับถอยหลัง
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
     time_left = int(30 - (time.time() - st.session_state.start))
 
@@ -89,7 +91,7 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
 
 st.divider()
 
-
+# 3. ช่องรับคำตอบ (จุดที่ 6: เพิ่มข้อ 3 และข้อ 4 จากหมวดหมู่)
 ans1 = st.text_input(
     "ข้อ 1: Monkeys love to eat `b _ n _ n _`. 🍌",
     value=st.session_state.ans1_val,
@@ -107,14 +109,14 @@ ans4 = st.text_input(
     value=st.session_state.ans4_val,
 )
 
-
+# อัปเดตค่าล่าสุดเข้าตัวแปร session_state (จุดที่ 7)
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
 
 
-
+# 4. ปุ่มส่งคำตอบ
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
     if st.button("📥 ส่งคำตอบ"):
         st.session_state.is_ended = True
@@ -123,11 +125,9 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
     time.sleep(1)
     st.rerun()
 
-
+# 5. แสดง Dialog ผลลัพธ์ (จุดที่ 8)
 if st.session_state.get("is_ended", False):
     show_result_dialog(ans1, ans2, ans3, ans4)
 
 st.divider()
 st.write("นายวรธน ปาลี เลขที่24 ม.4/9")
-
-```
