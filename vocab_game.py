@@ -102,7 +102,3 @@ if st.session_state.get("is_ended", False):
 
 st.divider()
 st.write("นาย วรธน ปาลี เลขที่24 ม.4/9")
-
-
-st.divider()
-st.write("นายวรธน ปาลี เลขที่24 ม.4/9")
